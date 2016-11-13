@@ -1,9 +1,8 @@
-node-cryptonote-pool
+equalpay-cryptonote-pool
 ====================
 
 High performance Node.js (with native C addons) mining pool for CryptoNote based coins such as Bytecoin, Monero, QuazarCoin, HoneyPenny, etc..
-Comes with lightweight example front-end script which uses the pool's AJAX API.
-
+Implements the unique EqualPay system
 
 
 #### Table of Contents
@@ -53,26 +52,22 @@ Comes with lightweight example front-end script which uses the pool's AJAX API.
   * Blocks found (pending, confirmed, and orphaned)
 * An easily extendable, responsive, light-weight front-end using API to display data
 * Worker login validation (make sure miners are using proper wallet addresses for mining)
-
+* EqualPay (ability to give rewards for just trying to mine)
 
 ### Community / Support
 
 * [CryptoNote Forum](https://forum.cryptonote.org/)
-* [Bytecoin Github](https://github.com/amjuarez/bytecoin)
 * [Monero Github](https://github.com/monero-project/bitmonero)
-* [Monero Announcement Thread](https://bitcointalk.org/index.php?topic=583449.0)
+* [Monero Site](https://getmonero.org/)
 * IRC (freenode)
   * Support / general discussion join #monero: https://webchat.freenode.net/?channels=#monero
   * Development discussion join #monero-dev: https://webchat.freenode.net/?channels=#monero-dev
+  * Pool discussion join #monero-pools: https://webchat.freenode.net/?channels=#monero-pools
 
 
 #### Pools Using This Software
 
-* http://xminingpool.com
-* http://xmr.poolto.be
-* https://moneropool.com
-* http://monero.crypto-pool.fr
-* https://minexmr.com
+* http://cryptopool.io/
 
 
 Usage
@@ -103,7 +98,7 @@ you are using - a good place to start with redis is [data persistence](http://re
 Clone the repository and run `npm update` for all the dependencies to be installed:
 
 ```bash
-git clone https://github.com/zone117x/node-cryptonote-pool.git pool
+git clone https://github.com/UsernameVF/equalpay-cryptonote-pool.git pool
 cd pool
 npm update
 ```
@@ -126,7 +121,7 @@ Explanation for each field:
 "coin": "monero",
 
 /* Used for front-end display */
-"symbol": "MRO",
+"symbol": "XMR",
 
 "logging": {
 
@@ -217,10 +212,9 @@ Explanation for each field:
         "invalidPercent": 25, //What percent of invalid shares triggers ban
         "checkThreshold": 30 //Perform check when this many shares have been submitted
     },
-    /* Slush Mining is a reward calculation technique which disincentivizes pool hopping and rewards users to mine with the pool steadily: Values of each share decrease in time – younger shares are valued higher than older shares.
-    More about it here: https://mining.bitcoin.cz/help/#!/manual/rewards */
+    /* Currently broken */
     "slushMining": {
-        "enabled": true, //Enables slush mining. Recommended for pools catering to professional miners
+        "enabled": false, //Enables slush mining. Recommended for pools catering to professional miners
         "weight": 120, //defines how fast value assigned to a share declines in time
         "lastBlockCheckRate": 1 //How often the pool checks for the timestamp of the last block. Lower numbers increase load for the Redis db, but make the share value more precise.
     }
@@ -422,7 +416,7 @@ curl 127.0.0.1:18081/json_rpc -d '{"method":"getblockheaderbyheight","params":{"
 Donations
 ---------
 * BTC: `1667jMt7NTZDaC8WXAxtMYBR8DPWCVoU4d`
-* MRO: `48Y4SoUJM5L3YXBEfNQ8bFNsvTNsqcH5Rgq8RF7BwpgvTBj2xr7CmWVanaw7L4U9MnZ4AG7U6Pn1pBhfQhFyFZ1rL1efL8z`
+* XMR: `49nXEZgydMCUh937zWmPrJWuWJVZz2sbUi8KBRoKE1xU3BnpDofeG3YTTYswySrgo5GzBD3X7Bis7cAPWiiWfS2LNH8h1DN`
 
 Credits
 ===
